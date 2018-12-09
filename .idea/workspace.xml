@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aecd63d5-7be9-48fd-aaa7-dbd74bc56325" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/OldRuleCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/OldRuleCalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/ZoneBoundaryCrossing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/ZoneBoundaryCrossing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/CongestionChargeSystemTest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/CongestionChargeSystemTest$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/CongestionChargeSystemTest$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/CongestionChargeSystemTest$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/CongestionChargeSystemTest$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/CongestionChargeSystemTest$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/CongestionChargeSystemTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/CongestionChargeSystemTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/trafficmon/CongestionChargeSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/trafficmon/CongestionChargeSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/trafficmon/OldRuleCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/trafficmon/OldRuleCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/trafficmon/ZoneBoundaryCrossing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/trafficmon/ZoneBoundaryCrossing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/com/trafficmon/CongestionChargeSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/trafficmon/CongestionChargeSystemTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -62,11 +52,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/com/trafficmon/CongestionChargeSystemTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
+            <state relative-caret-position="2805">
+              <caret line="187" column="7" selection-start-line="187" selection-start-column="7" selection-end-line="187" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../VehicleRecordCheckTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="93" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="93" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -132,8 +131,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-308" />
-    <option name="y" value="23" />
+    <option name="x" value="-9" />
+    <option name="y" value="27" />
     <option name="width" value="1178" />
     <option name="height" value="721" />
   </component>
@@ -187,7 +186,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544396820752" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544397722271" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -215,7 +214,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CongestionChargeSystemTest.checkInvestigation">
+  <component name="RunManager" selected="JUnit.CongestionChargeSystemTest">
     <configuration name="CongestionChargeSystemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="trafficmon" />
       <extension name="coverage">
@@ -230,7 +229,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CongestionChargeSystemTest.checkInvestigation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CongestionChargeSystemTest.testCrossingAfterLastEvent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="trafficmon" />
       <extension name="coverage">
         <pattern>
@@ -240,13 +239,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.trafficmon" />
       <option name="MAIN_CLASS_NAME" value="com.trafficmon.CongestionChargeSystemTest" />
-      <option name="METHOD_NAME" value="checkInvestigation" />
+      <option name="METHOD_NAME" value="testCrossingAfterLastEvent" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NewRuleCalculatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CongestionChargeSystemTest.testCrossingBeforeLastEventError" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="trafficmon" />
       <extension name="coverage">
         <pattern>
@@ -255,12 +254,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.trafficmon" />
-      <option name="MAIN_CLASS_NAME" value="com.trafficmon.NewRuleCalculatorTest" />
+      <option name="MAIN_CLASS_NAME" value="com.trafficmon.CongestionChargeSystemTest" />
+      <option name="METHOD_NAME" value="testCrossingBeforeLastEventError" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OldRuleCalculatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CongestionChargeSystemTest.testEntryBeforeEntryError" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="trafficmon" />
       <extension name="coverage">
         <pattern>
@@ -269,12 +270,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.trafficmon" />
-      <option name="MAIN_CLASS_NAME" value="com.trafficmon.OldRuleCalculatorTest" />
+      <option name="MAIN_CLASS_NAME" value="com.trafficmon.CongestionChargeSystemTest" />
+      <option name="METHOD_NAME" value="testEntryBeforeEntryError" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OldRuleCalculatorTest.checkOldRuleCharge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CongestionChargeSystemTest.testExitBeforeExitError" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="trafficmon" />
       <extension name="coverage">
         <pattern>
@@ -283,8 +286,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.trafficmon" />
-      <option name="MAIN_CLASS_NAME" value="com.trafficmon.OldRuleCalculatorTest" />
-      <option name="METHOD_NAME" value="checkOldRuleCharge" />
+      <option name="MAIN_CLASS_NAME" value="com.trafficmon.CongestionChargeSystemTest" />
+      <option name="METHOD_NAME" value="testExitBeforeExitError" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -292,11 +295,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CongestionChargeSystemTest.checkInvestigation" />
         <item itemvalue="JUnit.CongestionChargeSystemTest" />
-        <item itemvalue="JUnit.OldRuleCalculatorTest.checkOldRuleCharge" />
-        <item itemvalue="JUnit.OldRuleCalculatorTest" />
-        <item itemvalue="JUnit.NewRuleCalculatorTest" />
+        <item itemvalue="JUnit.CongestionChargeSystemTest.testCrossingAfterLastEvent" />
+        <item itemvalue="JUnit.CongestionChargeSystemTest.testExitBeforeExitError" />
+        <item itemvalue="JUnit.CongestionChargeSystemTest.testEntryBeforeEntryError" />
+        <item itemvalue="JUnit.CongestionChargeSystemTest.testCrossingBeforeLastEventError" />
       </list>
     </recent_temporary>
   </component>
@@ -310,29 +313,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1544149095221</updated>
-      <workItem from="1544390163329" duration="5583000" />
+      <workItem from="1544390163329" duration="6429000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="NewRuleCalculatorTest - 2018.12.09 at 21h 20m 53s.xml">
-      <configuration name="NewRuleCalculatorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OldRuleCalculatorTest - 2018.12.09 at 22h 02m 25s.xml">
-      <configuration name="OldRuleCalculatorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OldRuleCalculatorTest - 2018.12.09 at 22h 19m 40s.xml">
-      <configuration name="OldRuleCalculatorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OldRuleCalculatorTest_checkOldRuleCharge - 2018.12.09 at 22h 21m 48s.xml">
-      <configuration name="OldRuleCalculatorTest.checkOldRuleCharge" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OldRuleCalculatorTest_checkOldRuleCharge - 2018.12.09 at 22h 26m 19s.xml">
-      <configuration name="OldRuleCalculatorTest.checkOldRuleCharge" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CongestionChargeSystemTest - 2018.12.09 at 22h 44m 23s.xml">
-      <configuration name="CongestionChargeSystemTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CongestionChargeSystemTest_checkInvestigation - 2018.12.09 at 22h 59m 10s.xml">
       <configuration name="CongestionChargeSystemTest.checkInvestigation" configurationId="JUnit" />
     </history-entry>
@@ -345,15 +330,33 @@
     <history-entry file="CongestionChargeSystemTest_checkInvestigation - 2018.12.09 at 23h 00m 58s.xml">
       <configuration name="CongestionChargeSystemTest.checkInvestigation" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="CongestionChargeSystemTest_testCrossingBeforeLastEventError - 2018.12.09 at 23h 15m 53s.xml">
+      <configuration name="CongestionChargeSystemTest.testCrossingBeforeLastEventError" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CongestionChargeSystemTest_testCrossingBeforeLastEventError - 2018.12.09 at 23h 18m 16s.xml">
+      <configuration name="CongestionChargeSystemTest.testCrossingBeforeLastEventError" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CongestionChargeSystemTest_testEntryBeforeEntryError - 2018.12.09 at 23h 18m 21s.xml">
+      <configuration name="CongestionChargeSystemTest.testEntryBeforeEntryError" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CongestionChargeSystemTest_testExitBeforeExitError - 2018.12.09 at 23h 18m 27s.xml">
+      <configuration name="CongestionChargeSystemTest.testExitBeforeExitError" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CongestionChargeSystemTest_testCrossingAfterLastEvent - 2018.12.09 at 23h 18m 32s.xml">
+      <configuration name="CongestionChargeSystemTest.testCrossingAfterLastEvent" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CongestionChargeSystemTest - 2018.12.09 at 23h 22m 06s.xml">
+      <configuration name="CongestionChargeSystemTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5583000" />
+    <option name="totallyTimeSpent" value="6429000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="45" y="23" width="1178" height="721" extended-state="0" />
+    <frame x="-9" y="27" width="1178" height="721" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18661971" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18661971" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -365,7 +368,7 @@
       <window_info anchor="bottom" id="Docker" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
-      <window_info anchor="bottom" id="Run" order="5" visible="true" weight="0.3290938" />
+      <window_info active="true" anchor="bottom" id="Run" order="5" visible="true" weight="0.3290938" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
@@ -480,10 +483,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../VehicleRecordCheckTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="93" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="93" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/com/trafficmon/CongestionChargeSystemTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
+        <state relative-caret-position="2805">
+          <caret line="187" column="7" selection-start-line="187" selection-start-column="7" selection-end-line="187" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
