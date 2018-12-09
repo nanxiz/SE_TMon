@@ -8,7 +8,6 @@ public class OldRuleCalculator {
     public BigDecimal calculateChargeForTimeInZone(List<ZoneBoundaryCrossing> crossings) {
 
         BigDecimal charge = new BigDecimal(0);
-        //int charge = 0;
         ZoneBoundaryCrossing lastEvent = crossings.get(0);
         int timeIntheZone = 0;
 
