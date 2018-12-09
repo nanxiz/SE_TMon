@@ -22,7 +22,7 @@ public class NewRuleCalculatorTest {
     private Calculator newCalculator = new NewRuleCalculator();
     private Vehicle vehicle=Vehicle.withRegistration("A123 XYZ");
 
-    private CongestionChargeSystem congestionChargeSystem = new CongestionChargeSystem();
+    private CongestionChargeSystem congestionChargeSystem = new CongestionChargeSystem(operationsTeam);
     //private List<ZoneBoundaryCrossing> eventLog = new ArrayList<>();
 
 

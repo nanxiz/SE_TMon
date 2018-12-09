@@ -8,6 +8,13 @@ import java.util.*;
 
 public class CongestionChargeSystem {
 
+    private AccountsService accountsService = RegisteredCustomerAccountsService.getInstance();
+    private PenaltiesService penaltiesService = OperationsTeam.getInstance();
+
+    public CongestionChargeSystem(PenaltiesService penaltiesService){
+        this.penaltiesService = penaltiesService;
+    }
+
     private VehiclesRecord vehiclesRecords = new VehiclesRecord();
     private final Calculator newRuleCalculator = new NewRuleCalculator();
     private final List<ZoneBoundaryCrossing> eventLog = new ArrayList<ZoneBoundaryCrossing>();
@@ -37,16 +44,35 @@ public class CongestionChargeSystem {
 
                 BigDecimal charge = newRuleCalculator.calculateChargeForTimeInZone(crossings);
 
-                try {
-                    new SystemBehaviors().chargeDetuction(vehicle,charge);
-                } catch (InsufficientCreditException ice) {
-                    new SystemBehaviors().issuePenalty(vehicle,charge);
-                } catch (AccountNotRegisteredException e) {
-                    new SystemBehaviors().issuePenalty(vehicle,charge);
-                }
+                operating(vehicle, charge);
 
             }
         }
+    }
+
+    public void operating(Vehicle vehicle, BigDecimal charge) {
+
+
+        try {
+            accountsService.accountFor(vehicle).deduct(charge);
+        } catch (InsufficientCreditException ice) {
+            penaltiesService.issuePenaltyNotice(vehicle, charge);
+        } catch (AccountNotRegisteredException e) {
+            penaltiesService.issuePenaltyNotice(vehicle, charge);
+        }
+
+
+        /*
+
+        try {
+            new SystemBehaviors().chargeDetuction(vehicle,charge);
+        } catch (InsufficientCreditException ice) {
+            new SystemBehaviors().issuePenalty(vehicle,charge);
+        } catch (AccountNotRegisteredException e) {
+            new SystemBehaviors().issuePenalty(vehicle,charge);
+        }
+
+        */
     }
 
     public  List<ZoneBoundaryCrossing> getEventLog(){
