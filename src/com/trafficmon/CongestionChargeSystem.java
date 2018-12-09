@@ -12,7 +12,7 @@ public class CongestionChargeSystem {
     private  VehicleRecordCheck checkVehicleRecord = new VehicleRecordCheck();
     private final NewRuleCalculator newRuleCalculator = new NewRuleCalculator();
     private final List<ZoneBoundaryCrossing> eventLog = new ArrayList<ZoneBoundaryCrossing>();
-
+    //private OperationsTeam operationsTeam;
 
 
 
@@ -40,8 +40,15 @@ public class CongestionChargeSystem {
 
             if (checkVehicleRecord.checkOrderingOf(crossings,vehicle)){
 
-                newRuleCalculator.calculateChargeForTimeInZone(crossings,vehicle);
+                BigDecimal charge = newRuleCalculator.calculateChargeForTimeInZone(crossings,vehicle);
 
+                try {
+                    RegisteredCustomerAccountsService.getInstance().accountFor(vehicle).deduct(charge);
+                } catch (InsufficientCreditException ice) {
+                    OperationsTeam.getInstance().issuePenaltyNotice(vehicle, charge);
+                } catch (AccountNotRegisteredException e) {
+                    OperationsTeam.getInstance().issuePenaltyNotice(vehicle, charge);
+                }
 
             }
         }

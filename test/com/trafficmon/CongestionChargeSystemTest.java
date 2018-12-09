@@ -14,6 +14,7 @@ import static org.hamcrest.core.Is.is;
 class CongestionChargeSystemTest {
 
     @Rule
+
     public JUnitRuleMockery context = new JUnitRuleMockery();
     public CongestionChargeSystem ccsystem = new CongestionChargeSystem();
 
@@ -31,4 +32,6 @@ class CongestionChargeSystemTest {
         System.out.println(ccsystem.getEventLog());
 
     }
+
+
 }

@@ -9,7 +9,7 @@ import org.joda.time.*;
 public class NewRuleCalculator {
 
 
-    public void calculateChargeForTimeInZone(List<ZoneBoundaryCrossing> crossings,Vehicle vehicle) {
+    public BigDecimal calculateChargeForTimeInZone(List<ZoneBoundaryCrossing> crossings,Vehicle vehicle) {
 
         ZoneBoundaryCrossing lastEvent = crossings.get(0);
 
@@ -39,15 +39,9 @@ public class NewRuleCalculator {
             lastEvent = crossing;
         }
 
-        try {
-            RegisteredCustomerAccountsService.getInstance().accountFor(vehicle).deduct(BigDecimal.valueOf(charge));
-        } catch (InsufficientCreditException ice) {
-            OperationsTeam.getInstance().issuePenaltyNotice(vehicle, BigDecimal.valueOf(charge));
-        } catch (AccountNotRegisteredException e) {
-            OperationsTeam.getInstance().issuePenaltyNotice(vehicle, BigDecimal.valueOf(charge));
-        }
 
-        //return BigDecimal.valueOf(charge);
+
+        return BigDecimal.valueOf(charge);
     }
 
     private int checkIfTimeBeforeTwo(long time,int charge){
