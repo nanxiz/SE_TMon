@@ -9,11 +9,8 @@ import java.util.*;
 public class CongestionChargeSystem {
 
     private VehiclesRecord vehiclesRecords = new VehiclesRecord();
-    private  VehicleRecordCheck checkVehicleRecord = new VehicleRecordCheck();
-    private final NewRuleCalculator newRuleCalculator = new NewRuleCalculator();
+    private final Calculator newRuleCalculator = new NewRuleCalculator();
     private final List<ZoneBoundaryCrossing> eventLog = new ArrayList<ZoneBoundaryCrossing>();
-    //private OperationsTeam operationsTeam;
-
 
 
     public void vehicleEnteringZone(Vehicle vehicle) {
@@ -21,64 +18,40 @@ public class CongestionChargeSystem {
     }
 
     public void vehicleLeavingZone(Vehicle vehicle) {
-        if (!previouslyRegistered(vehicle)) {
+        if (!vehiclesRecords.previouslyRegistered(vehicle,eventLog)) {
             return;
         }
         eventLog.add(new ExitEvent(vehicle));
+
     }
 
 
-
     public void calculateCharges() {
-
-
 
         for (Map.Entry<Vehicle, List<ZoneBoundaryCrossing>>
                 vehicleCrossings : vehiclesRecords.fileEventLogIntoVehiclesRecord(eventLog).entrySet()) {
             Vehicle vehicle = vehicleCrossings.getKey();
             List<ZoneBoundaryCrossing> crossings = vehicleCrossings.getValue();
 
-            if (checkVehicleRecord.checkOrderingOf(crossings,vehicle)){
+            if (vehiclesRecords.checkOrderingOf(crossings,vehicle)){
 
-                BigDecimal charge = newRuleCalculator.calculateChargeForTimeInZone(crossings,vehicle);
+                BigDecimal charge = newRuleCalculator.calculateChargeForTimeInZone(crossings);
 
                 try {
-                    RegisteredCustomerAccountsService.getInstance().accountFor(vehicle).deduct(charge);
+                    new SystemBehaviors().chargeDetuction(vehicle,charge);
                 } catch (InsufficientCreditException ice) {
-                    OperationsTeam.getInstance().issuePenaltyNotice(vehicle, charge);
+                    new SystemBehaviors().issuePenalty(vehicle,charge);
                 } catch (AccountNotRegisteredException e) {
-                    OperationsTeam.getInstance().issuePenaltyNotice(vehicle, charge);
+                    new SystemBehaviors().issuePenalty(vehicle,charge);
                 }
 
             }
         }
     }
 
-    //figure out a fucking way to change this
     public  List<ZoneBoundaryCrossing> getEventLog(){
         return eventLog;
     }
-
-
-
-
-    private boolean previouslyRegistered(Vehicle vehicle) {
-        for (ZoneBoundaryCrossing crossing : eventLog) {
-            if (crossing.getVehicle().equals(vehicle)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-
-
-
-
-
-
-
 
 
 

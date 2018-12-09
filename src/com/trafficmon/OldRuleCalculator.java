@@ -3,8 +3,10 @@ package com.trafficmon;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class OldRuleCalculator {
+public class OldRuleCalculator  implements Calculator {
+
     public static final BigDecimal CHARGE_RATE_POUNDS_PER_MINUTE = new BigDecimal(0.05);
+    @Override
     public BigDecimal calculateChargeForTimeInZone(List<ZoneBoundaryCrossing> crossings) {
 
         BigDecimal charge = new BigDecimal(0);

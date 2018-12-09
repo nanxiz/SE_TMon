@@ -6,10 +6,11 @@ import java.util.List;
 import org.joda.time.*;
 
 
-public class NewRuleCalculator {
+public class NewRuleCalculator implements Calculator {
 
 
-    public BigDecimal calculateChargeForTimeInZone(List<ZoneBoundaryCrossing> crossings,Vehicle vehicle) {
+    @Override
+    public BigDecimal calculateChargeForTimeInZone(List<ZoneBoundaryCrossing> crossings) {
 
         ZoneBoundaryCrossing lastEvent = crossings.get(0);
 
