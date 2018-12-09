@@ -32,7 +32,7 @@ public class NewRuleCalculator implements Calculator {
             }
             if (crossing instanceof EntryEvent) {
                 if (minutesBetween(lastEvent.timestamp(),crossing.timestamp())>4*60){
-                    charge = checkIfTimeBeforeTwo(lastEvent.timestamp(),charge);
+                    charge += checkIfTimeBeforeTwo(crossing.timestamp(),charge);
 
                 }
             }
@@ -47,7 +47,7 @@ public class NewRuleCalculator implements Calculator {
 
     private int checkIfTimeBeforeTwo(long time,int charge){
         DateTime InitTime = new DateTime(time);
-        return (InitTime.getHourOfDay()<14)? charge+6 : charge+4;
+        return (InitTime.getHourOfDay()<14)? 6 : 4;
 
     }
 
