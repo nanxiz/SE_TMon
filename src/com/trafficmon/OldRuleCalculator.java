@@ -6,6 +6,7 @@ import java.util.List;
 public class OldRuleCalculator  implements Calculator {
 
     public static final BigDecimal CHARGE_RATE_POUNDS_PER_MINUTE = new BigDecimal(0.05);
+
     @Override
     public BigDecimal calculateChargeForTimeInZone(List<ZoneBoundaryCrossing> crossings) {
 
@@ -26,7 +27,12 @@ public class OldRuleCalculator  implements Calculator {
 
         return charge;
     }
+
     private int minutesBetween(long startTimeMs, long endTimeMs) {
         return (int) Math.ceil((endTimeMs - startTimeMs) / (1000.0 * 60.0));
     }
+
+
+
+
 }

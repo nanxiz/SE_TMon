@@ -43,9 +43,9 @@ public class CongestionChargeSystem {
             if (vehiclesRecords.checkOrderingOf(crossings,vehicle)){
 
                 BigDecimal charge = newRuleCalculator.calculateChargeForTimeInZone(crossings);
-
                 operating(vehicle, charge);
-
+            }else{
+                penaltiesService.triggerInvestigationInto(vehicle);
             }
         }
     }
