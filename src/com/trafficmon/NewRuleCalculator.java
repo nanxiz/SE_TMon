@@ -6,69 +6,55 @@ import java.util.List;
 import org.joda.time.*;
 
 
-public class CalculateNewCharges {
+public class NewRuleCalculator {
+
+
+
+  //  public newRuleCalculator(){
+
+   // }
     public BigDecimal calculateChargeForTimeInZone(List<ZoneBoundaryCrossing> crossings) {
 
         ZoneBoundaryCrossing lastEvent = crossings.get(0);
 
         int timeInZone = 0;
-        long enterTime = lastEvent.timestamp(); // to store the updated time after each enter
 
-        BigDecimal charge = BigDecimal.valueOf(0);
+        int charge = 0;
 
-        if (checkIfTimeBeforeTwo(enterTime)) {charge = BigDecimal.valueOf(6);}
-        else {charge = BigDecimal.valueOf(4);}
+        charge = checkIfTimeBeforeTwo(lastEvent.timestamp(),charge);
 
         for (ZoneBoundaryCrossing crossing : crossings.subList(1, crossings.size())) {
 
             if (crossing instanceof ExitEvent) {
-               timeInZone += minutesBetween(enterTime,crossing.timestamp());
+               timeInZone += minutesBetween(lastEvent.timestamp(),crossing.timestamp());
                if (timeInZone>4*60){
-                   charge = BigDecimal.valueOf(12);
+                   charge = 12;
                    break;
                }
 
             }
             if (crossing instanceof EntryEvent) {
-                if (minutesBetween(enterTime,crossing.timestamp())>4*60){
-                    if (checkIfTimeBeforeTwo(crossing.timestamp())){
-                        charge = charge.add(BigDecimal.valueOf(6));
-                    }
+                if (minutesBetween(lastEvent.timestamp(),crossing.timestamp())>4*60){
+                    charge = checkIfTimeBeforeTwo(lastEvent.timestamp(),charge);
+
                 }
             }
-
-
 
             lastEvent = crossing;
         }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-        return charge;
+        return BigDecimal.valueOf(charge);
     }
 
-    private boolean checkIfTimeBeforeTwo(long time){
+    private int checkIfTimeBeforeTwo(long time,int charge){
         DateTime InitTime = new DateTime(time);
+        return (InitTime.getHourOfDay()<14)? charge+6 : charge+4;
 
-        if (InitTime.getHourOfDay()<14) {
-            return true;
-
-        }
-        return false;
     }
 
-    //以后改成interface
+    //以后改
     private int minutesBetween(long startTimeMs, long endTimeMs) {
         return (int) Math.ceil((endTimeMs - startTimeMs) / (1000.0 * 60.0));
     }

@@ -1,4 +1,6 @@
 package com.trafficmon;
+import org.joda.time.*;
+
 
 public abstract class ZoneBoundaryCrossing {
 
@@ -7,7 +9,7 @@ public abstract class ZoneBoundaryCrossing {
 
     public ZoneBoundaryCrossing(Vehicle vehicle) {
         this.vehicle = vehicle;
-        this.time = System.currentTimeMillis();
+        this.time = DateTimeUtils.currentTimeMillis();
     }
 
     public Vehicle getVehicle() {
@@ -17,4 +19,5 @@ public abstract class ZoneBoundaryCrossing {
     public long timestamp() {
         return time;
     }
+
 }
