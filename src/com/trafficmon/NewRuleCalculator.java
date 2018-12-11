@@ -3,14 +3,15 @@ package com.trafficmon;
 
 import java.math.BigDecimal;
 import java.util.List;
+
 import org.joda.time.*;
 
 
-public class NewRuleCalculator implements Calculator {
+public class NewRuleCalculator extends GeneralCalculator {
 
 
     @Override
-    public BigDecimal calculateChargeForTimeInZone(List<ZoneBoundaryCrossing> crossings) {
+    public BigDecimal calculateCharge(List<ZoneBoundaryCrossing> crossings) {
 
         ZoneBoundaryCrossing lastEvent = crossings.get(0);
 
@@ -18,21 +19,21 @@ public class NewRuleCalculator implements Calculator {
 
         int charge = 0;
 
-        charge = checkIfTimeBeforeTwo(lastEvent.timestamp(),charge);
+        charge = checkIfTimeBeforeTwo(lastEvent.timestamp());
 
         for (ZoneBoundaryCrossing crossing : crossings.subList(1, crossings.size())) {
 
             if (crossing instanceof ExitEvent) {
                timeInZone += minutesBetween(lastEvent.timestamp(),crossing.timestamp());
-               if (timeInZone>4*60){
+               if (timeInZone>240){ //240 represents 4 hours
                    charge = 12;
                    break;
                }
 
             }
             if (crossing instanceof EntryEvent) {
-                if (minutesBetween(lastEvent.timestamp(),crossing.timestamp())>4*60){
-                    charge += checkIfTimeBeforeTwo(crossing.timestamp(),charge);
+                if (minutesBetween(lastEvent.timestamp(),crossing.timestamp())>240){
+                    charge += checkIfTimeBeforeTwo(crossing.timestamp());
 
                 }
             }
@@ -45,16 +46,10 @@ public class NewRuleCalculator implements Calculator {
         return BigDecimal.valueOf(charge);
     }
 
-    private int checkIfTimeBeforeTwo(long time,int charge){
-        DateTime InitTime = new DateTime(time);
-        return (InitTime.getHourOfDay()<14)? 6 : 4;
+    public int checkIfTimeBeforeTwo(long time){
+        DateTime comeInTime = new DateTime(time);
+        return (comeInTime.getHourOfDay()<14)? 6 : 4;
 
-    }
-
-
-
-    private int minutesBetween(long startTimeMs, long endTimeMs) {
-        return (int) Math.ceil((endTimeMs - startTimeMs) / (1000.0 * 60.0));
     }
 
 

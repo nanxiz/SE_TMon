@@ -3,12 +3,12 @@ package com.trafficmon;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class OldRuleCalculator  implements Calculator {
+public class OldRuleCalculator extends GeneralCalculator {
 
     public static final BigDecimal CHARGE_RATE_POUNDS_PER_MINUTE = new BigDecimal(0.05);
 
     @Override
-    public BigDecimal calculateChargeForTimeInZone(List<ZoneBoundaryCrossing> crossings) {
+    public BigDecimal calculateCharge(List<ZoneBoundaryCrossing> crossings) {
 
         BigDecimal charge = new BigDecimal(0);
         ZoneBoundaryCrossing lastEvent = crossings.get(0);
@@ -27,12 +27,4 @@ public class OldRuleCalculator  implements Calculator {
 
         return charge;
     }
-
-    private int minutesBetween(long startTimeMs, long endTimeMs) {
-        return (int) Math.ceil((endTimeMs - startTimeMs) / (1000.0 * 60.0));
-    }
-
-
-
-
 }

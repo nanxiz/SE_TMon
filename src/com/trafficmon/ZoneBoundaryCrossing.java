@@ -20,8 +20,5 @@ public abstract class ZoneBoundaryCrossing {
         return time;
     }
 
-    public void setTimestamp(long time) {
-        this.time = time;
-    }
 
 }
