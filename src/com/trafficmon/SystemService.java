@@ -5,9 +5,16 @@ import java.math.BigDecimal;
 public class SystemService implements SystemServiceInterface {
     private AccountsService accountsService;
     private PenaltiesService operationsTeam;
+
     public SystemService(){
         this.accountsService = RegisteredCustomerAccountsService.getInstance();
         this.operationsTeam = OperationsTeam.getInstance();
+    }
+
+    //For testing
+    public SystemService(PenaltiesService operationsTeam){
+        this.accountsService = RegisteredCustomerAccountsService.getInstance();
+        this.operationsTeam = operationsTeam;
     }
 
     @Override
@@ -19,7 +26,7 @@ public class SystemService implements SystemServiceInterface {
         operationsTeam.triggerInvestigationInto(vehicle);
     }
     @Override
-    public void chargeDetuction(Vehicle vehicle, BigDecimal charge){
+    public void chargeDeduction(Vehicle vehicle, BigDecimal charge){
                // throws AccountNotRegisteredException, InsufficientCreditException {
         try {accountsService.accountFor(vehicle).deduct(charge);}
         catch(AccountNotRegisteredException|InsufficientCreditException e){

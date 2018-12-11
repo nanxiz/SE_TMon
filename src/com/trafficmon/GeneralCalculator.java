@@ -29,7 +29,7 @@ public abstract class GeneralCalculator {
         }
         else{
             BigDecimal charge = calculateCharge(crossings);
-            systemServices.chargeDetuction(vehicle,charge);
+            systemServices.chargeDeduction(vehicle,charge);
 
         }
     }

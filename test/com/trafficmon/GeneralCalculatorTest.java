@@ -96,7 +96,7 @@ public class GeneralCalculatorTest {
             //the false below mean false to "!checkOrderingOf"
             // meaning the it is ok to charge the vehicle for its eventLog
             if (false) {
-                exactly(1).of(systemService).chargeDetuction(vehicle, new BigDecimal(12));
+                exactly(1).of(systemService).chargeDeduction(vehicle, new BigDecimal(12));
             }
             else{}
         }});
@@ -109,7 +109,7 @@ public class GeneralCalculatorTest {
      * Then SystemService should be called to trigger investigation to the vehicle
      */
     public void checkSystemServiceTriggerInvestigation(){
-        List<ZoneBoundaryCrossing> eventLog=new ArrayList<ZoneBoundaryCrossing>();
+        List<ZoneBoundaryCrossing> eventLog = new ArrayList<ZoneBoundaryCrossing>();
         //create a vehicle's eventLog that could return false if checkOrderingOf(eventLog)
         new CrossingEvent().makeCrossingEvent(vehicle,"07:00:29","05:00:22",eventLog);
         context.checking(new Expectations(){{

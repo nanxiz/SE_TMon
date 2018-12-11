@@ -25,6 +25,11 @@ public class CongestionChargeSystemTest {
 
 
     @Test
+    /**
+     * Check the size of eventLog
+     * If a vehicle enters and leaves,
+     * The eventLog will update with 2 events
+     */
     public void checkEventLogSize() {
         ccsystem.vehicleEnteringZone(vehicle1);
         ccsystem.vehicleLeavingZone(vehicle1);
@@ -32,6 +37,11 @@ public class CongestionChargeSystemTest {
     }
 
     @Test
+    /**
+     * Check if the eventLog is updated correctly
+     * If different vehicles enter and leave,
+     * The eventLog will record the correct vehicle and event
+     */
     public void checkEventLogEntries(){
         ccsystem.vehicleEnteringZone(vehicle1);
         ccsystem.vehicleEnteringZone(vehicle2);

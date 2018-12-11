@@ -8,5 +8,5 @@ public interface SystemServiceInterface {
 
     void triggerInvestigation(Vehicle vehicle);
 
-    void chargeDetuction(Vehicle vehicle, BigDecimal charge);// throws AccountNotRegisteredException, InsufficientCreditException;
+    void chargeDeduction(Vehicle vehicle, BigDecimal charge);// throws AccountNotRegisteredException, InsufficientCreditException;
 }
