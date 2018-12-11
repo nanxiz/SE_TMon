@@ -4,12 +4,14 @@ import java.util.*;
 
 public class CongestionChargeSystem {
     private final GeneralCalculator newRuleCalculator;
-    private final VehiclesCrossingsRecord vehiclesCrossingsRecords = new VehiclesCrossingsRecord();
-    private final List<ZoneBoundaryCrossing> eventLog = new ArrayList<ZoneBoundaryCrossing>();
+    private final VehiclesCrossingsRecord vehiclesCrossingsRecords;
+    private final List<ZoneBoundaryCrossing> eventLog;
 
 
     CongestionChargeSystem(){
         this.newRuleCalculator = new NewRuleCalculator();
+        this.eventLog = new ArrayList<ZoneBoundaryCrossing>();
+        this.vehiclesCrossingsRecords = new VehiclesCrossingsRecord();
     }
 
 

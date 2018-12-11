@@ -5,8 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class GeneralCalculator {
+    private SystemServiceInterface systemServices;
+
+    public GeneralCalculator(){
+        this.systemServices =  new SystemService();
+    }
+
     public abstract BigDecimal calculateCharge(List<ZoneBoundaryCrossing> crossings);
-    private SystemServiceInterface systemServices = new SystemService();
 
     public int minutesBetween(long startTimeMs, long endTimeMs) {
         return (int) Math.ceil((endTimeMs - startTimeMs) / (1000.0 * 60.0));
@@ -32,7 +37,7 @@ public abstract class GeneralCalculator {
         }
     }
 
-    public boolean checkOrderingOf(List<ZoneBoundaryCrossing> crossings, Vehicle vehicle) {
+    boolean checkOrderingOf(List<ZoneBoundaryCrossing> crossings, Vehicle vehicle) {
 
         ZoneBoundaryCrossing lastEvent = crossings.get(0);
 

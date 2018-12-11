@@ -9,6 +9,10 @@ public class OldRuleCalculator extends GeneralCalculator {
 
     @Override
     public BigDecimal calculateCharge(List<ZoneBoundaryCrossing> crossings) {
+        return calculate(crossings);
+    }
+
+    private BigDecimal calculate(List<ZoneBoundaryCrossing> crossings){
 
         BigDecimal charge = new BigDecimal(0);
         ZoneBoundaryCrossing lastEvent = crossings.get(0);

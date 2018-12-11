@@ -9,10 +9,14 @@ import org.joda.time.*;
 
 public class NewRuleCalculator extends GeneralCalculator {
 
+    public static final int TIME_DETERMINATION_POINT = 14;
 
     @Override
     public BigDecimal calculateCharge(List<ZoneBoundaryCrossing> crossings) {
+        return calculate(crossings);
+    }
 
+    private BigDecimal calculate(List<ZoneBoundaryCrossing> crossings){
         ZoneBoundaryCrossing lastEvent = crossings.get(0);
 
         int timeInZone = 0;
@@ -24,11 +28,11 @@ public class NewRuleCalculator extends GeneralCalculator {
         for (ZoneBoundaryCrossing crossing : crossings.subList(1, crossings.size())) {
 
             if (crossing instanceof ExitEvent) {
-               timeInZone += minutesBetween(lastEvent.timestamp(),crossing.timestamp());
-               if (timeInZone>240){ //240 represents 4 hours
-                   charge = 12;
-                   break;
-               }
+                timeInZone += minutesBetween(lastEvent.timestamp(),crossing.timestamp());
+                if (timeInZone>240){ //240 represents 4 hours
+                    charge = 12;
+                    break;
+                }
 
             }
             if (crossing instanceof EntryEvent) {
@@ -48,7 +52,7 @@ public class NewRuleCalculator extends GeneralCalculator {
 
     public int checkIfTimeBeforeTwo(long time){
         DateTime comeInTime = new DateTime(time);
-        return (comeInTime.getHourOfDay()<14)? 6 : 4;
+        return (comeInTime.getHourOfDay()<TIME_DETERMINATION_POINT)? 6 : 4;
 
     }
 

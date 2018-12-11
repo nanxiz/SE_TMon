@@ -1,34 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c86d2ee5-ff1f-4723-be81-b1ddc33da1cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SE_TMon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SE_TMon.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SE_TMon/com/trafficmon/SystemService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SE_TMon/com/trafficmon/SystemService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/CongestionChargeSystem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/EntryEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/ExitEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/GeneralCalculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/NewRuleCalculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/OldRuleCalculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/SystemService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/SystemServiceInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/Vehicle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/VehiclesCrossingsRecord.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/VehiclesCrossingsRecordInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/ZoneBoundaryCrossing.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/trafficmon/com/trafficmon/tt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/CongestionChargeSystemTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/CrossingEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/GeneralCalculatorTest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/GeneralCalculatorTest$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/GeneralCalculatorTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/NewRuleCalculatorTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/OldRuleCalculatorTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/SystemServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/trafficmon/com/trafficmon/VehiclesCrossingsRecordTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/trafficmon/SystemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/trafficmon/SystemService.java" afterDir="false" />
-    </list>
+    <list default="true" id="c86d2ee5-ff1f-4723-be81-b1ddc33da1cd" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/trafficmon/CongestionChargeSystem.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="399">
-              <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+              <caret line="43" column="7" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
               <folding>
                 <element signature="e#812#834#0" expanded="true" />
                 <element signature="e#551#552#0" expanded="true" />
@@ -83,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/trafficmon/VehiclesCrossingsRecord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="179">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -157,12 +130,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="172">
               <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-              <folding>
-                <element signature="e#652#653#0" expanded="true" />
-                <element signature="e#720#721#0" expanded="true" />
-                <element signature="e#777#778#0" expanded="true" />
-                <element signature="e#828#829#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -272,7 +239,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544533049997" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544535168821" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -539,8 +506,8 @@
     <entry file="file://$PROJECT_DIR$/../Desktop/SE_TMon/test/com/trafficmon/CongestionChargeSystemTest.java" />
     <entry file="file://$PROJECT_DIR$/src/com/trafficmon/VehiclesCrossingsRecord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="179">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -603,7 +570,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/trafficmon/CongestionChargeSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
-          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+          <caret line="43" column="7" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
           <folding>
             <element signature="e#812#834#0" expanded="true" />
             <element signature="e#551#552#0" expanded="true" />
@@ -641,12 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
           <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-          <folding>
-            <element signature="e#652#653#0" expanded="true" />
-            <element signature="e#720#721#0" expanded="true" />
-            <element signature="e#777#778#0" expanded="true" />
-            <element signature="e#828#829#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
