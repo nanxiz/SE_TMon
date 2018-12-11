@@ -5,7 +5,7 @@ public class tt {
 
     public static void main(String[] args) throws Exception {
         PenaltiesService penaltiesService = OperationsTeam.getInstance();
-        CongestionChargeSystem congestionChargeSystem = new CongestionChargeSystem(penaltiesService);
+        CongestionChargeSystem congestionChargeSystem = new CongestionChargeSystem();
     congestionChargeSystem.vehicleEnteringZone(Vehicle.withRegistration("A123 XYZ"));
     delaySeconds(15);
     System.out.println(congestionChargeSystem.getEventLog());

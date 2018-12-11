@@ -20,7 +20,7 @@ public class VehiclesCrossingsRecordTest {
     private final EntryEvent entry2 = new EntryEvent(Vehicle.withRegistration("A123 XYZ"));
     private final ExitEvent exit2 = new ExitEvent(Vehicle.withRegistration("A123 XYZ"));
 
-
+//补完
 
 
 
