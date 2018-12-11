@@ -3,13 +3,13 @@ package com.trafficmon;
 import java.util.*;
 
 public class CongestionChargeSystem {
-    private final GeneralCalculator newRuleCalculator;
+    private final GeneralCalculator calculator;
     private final VehiclesCrossingsRecord vehiclesCrossingsRecords;
     private final List<ZoneBoundaryCrossing> eventLog;
 
 
     CongestionChargeSystem(){
-        this.newRuleCalculator = new NewRuleCalculator();
+        this.calculator = new NewRuleCalculator();
         this.eventLog = new ArrayList<ZoneBoundaryCrossing>();
         this.vehiclesCrossingsRecords = new VehiclesCrossingsRecord();
     }
@@ -30,9 +30,12 @@ public class CongestionChargeSystem {
      * this method is for calculating all the vehicles charge and charge them
      */
     public void calculateCharges() {
-        newRuleCalculator.calculateAllVehicleCharges(vehiclesCrossingsRecords.fileEventLogIntoVehiclesRecord(eventLog));
+        calculator.calculateAllVehicleCharges(vehiclesCrossingsRecords.fileEventLogIntoVehiclesRecord(eventLog));
     }
 
+    //public void switchCalculator(GeneralCalculator calculator){
+        //this.calculator=calculator.calculateCharge();
+   // }
 
     public  List<ZoneBoundaryCrossing> getEventLog(){
         return eventLog;

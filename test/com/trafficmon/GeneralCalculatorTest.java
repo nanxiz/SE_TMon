@@ -8,6 +8,8 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.trafficmon.CrossingEventBuilder.crossingEvent;
 import static org.junit.Assert.*;
 
 
@@ -16,111 +18,117 @@ public class GeneralCalculatorTest {
     public JUnitRuleMockery context = new JUnitRuleMockery();
     private SystemServiceInterface systemService = context.mock(SystemServiceInterface.class);
     private GeneralCalculator calculator = new NewRuleCalculator();
-    private final Vehicle vehicle = Vehicle.withRegistration("A123 XYZ");
+    private final Vehicle defaultVehicle = Vehicle.withRegistration("A123 XYZ");
 
 
 
     @Test
     public void testMinutesBetween() {
-        assertEquals(calculator.minutesBetween(21555,99999),2);
-        assertEquals(calculator.minutesBetween(398756,897654),9);
-        assertEquals(calculator.minutesBetween(78999567,99998648),350);
+        long timeOne = crossingEvent().build().dateTimeToMilis("12:08:00");
+        long timeTwo = crossingEvent().build().dateTimeToMilis("12:48:00");
+        long timeThree = crossingEvent().build().dateTimeToMilis("15:08:00");
+        assertEquals(calculator.minutesBetween(timeOne,timeTwo),40);
+        assertEquals(calculator.minutesBetween(timeOne,timeThree),180);
+        assertEquals(calculator.minutesBetween(timeTwo,timeThree),140);
     }
 
-    @Test
+
     /**
      *If the new event is before the last event
      *Then checkOderingOf should return false
      */
+    @Test
     public void testNewEventBeforeLastError(){
         List<ZoneBoundaryCrossing> eventLog=new ArrayList<ZoneBoundaryCrossing>();
-        new CrossingEvent().makeCrossingEvent(vehicle,"09:00:29","07:00:22",eventLog);
-        assertFalse(calculator.checkOrderingOf(eventLog,vehicle));
+        crossingEvent().setComeInTime("09:00:29").setComeOutTime("07:00:22").setEventLog(eventLog).build().addEventLog();
+        assertFalse(calculator.checkOrderingOf(eventLog, defaultVehicle));
     }
 
-    @Test
     /**
      *if an entry is followed by an entry
      *then it should return false
      */
+    @Test
     public void testEntryBeforeEntryError(){
         List<ZoneBoundaryCrossing> eventLog=new ArrayList<ZoneBoundaryCrossing>();
-        eventLog.add(new EntryEvent(vehicle));
-        eventLog.add(new EntryEvent(vehicle));
-        eventLog.add(new ExitEvent(vehicle));
+        eventLog.add(new EntryEvent(defaultVehicle));
+        eventLog.add(new EntryEvent(defaultVehicle));
+        eventLog.add(new ExitEvent(defaultVehicle));
 
-        assertFalse(calculator.checkOrderingOf(eventLog,vehicle));
+        assertFalse(calculator.checkOrderingOf(eventLog, defaultVehicle));
     }
 
-    @Test
     /**
      *if an exit is followed by an exit
      *then CheckOderingOf should return false
      */
+    @Test
     public void testExitAfterExitError(){
         List<ZoneBoundaryCrossing> eventLog=new ArrayList<ZoneBoundaryCrossing>();
-        eventLog.add(new EntryEvent(vehicle));
-        eventLog.add(new ExitEvent(vehicle));
-        eventLog.add(new ExitEvent(vehicle));
-        assertFalse(calculator.checkOrderingOf(eventLog,vehicle));
+        eventLog.add(new EntryEvent(defaultVehicle));
+        eventLog.add(new ExitEvent(defaultVehicle));
+        eventLog.add(new ExitEvent(defaultVehicle));
+        assertFalse(calculator.checkOrderingOf(eventLog, defaultVehicle));
     }
 
-    @Test
     /**
      *if the last event is before the new event
      *an Entry/Exit Event followed by Exit/Entry Event
      *then checkOderingOf should return true
      */
+    @Test
     public void checkOrderingOf() {
         List<ZoneBoundaryCrossing> eventLog=new ArrayList<ZoneBoundaryCrossing>();
-        new CrossingEvent().makeCrossingEvent(vehicle,"03:20:29","08:05:32",eventLog);
-        new CrossingEvent().makeCrossingEvent(vehicle,"09:33:57","10:35:17",eventLog);
+        crossingEvent().setComeInTime("03:20:29").setComeOutTime("08:05:32").setEventLog(eventLog).build().addEventLog();
+        crossingEvent().setComeInTime("09:33:57").setComeOutTime("10:35:17").setEventLog(eventLog).build().addEventLog();
 
-        assertTrue(calculator.checkOrderingOf(eventLog,vehicle));
+        assertTrue(calculator.checkOrderingOf(eventLog, defaultVehicle));
 
     }
 
-    @Test
+
     /**
-     *If the vehicle's eventLog pass the checkOdering test
+     *If the defaultVehicle's eventLog pass the checkOdering test
      *Then SystemService should be called to issue charge deduction
      */
+    @Test
     public void checkSystemServiceChargeDeduction() {
         List<ZoneBoundaryCrossing> eventLog=new ArrayList<ZoneBoundaryCrossing>();
-        //create a vehicle's eventLog that could return true if checkOrderingOf(eventLog)
-        new CrossingEvent().makeCrossingEvent(vehicle,"05:00:29","07:00:22",eventLog);
-        new CrossingEvent().makeCrossingEvent(vehicle,"10:00:29","11:00:22",eventLog);
-        new CrossingEvent().makeCrossingEvent(vehicle,"13:00:29","18:00:22",eventLog);
+        //create a defaultVehicle's eventLog that could return true if checkOrderingOf(eventLog)
+        crossingEvent().setComeInTime("05:00:29").setComeOutTime("07:00:22").setEventLog(eventLog).build().addEventLog();
+        crossingEvent().setComeInTime("10:00:29").setComeOutTime("11:00:22").setEventLog(eventLog).build().addEventLog();
+        crossingEvent().setComeInTime("13:00:29").setComeOutTime("18:00:22").setEventLog(eventLog).build().addEventLog();
 
         context.checking(new Expectations(){{
             //the false below mean false to "!checkOrderingOf"
-            // meaning the it is ok to charge the vehicle for its eventLog
+            // meaning the it is ok to charge the defaultVehicle for its eventLog
             if (false) {
-                exactly(1).of(systemService).chargeDeduction(vehicle, new BigDecimal(12));
+                exactly(1).of(systemService).chargeDeduction(defaultVehicle, new BigDecimal(12));
             }
             else{}
         }});
-        calculator.calculateOneVehicleCharge(vehicle,eventLog);
+        calculator.calculateOneVehicleCharge(defaultVehicle,eventLog);
     }
 
-    @Test
+
     /**
-     * If the vehicle's eventLog fail the checkOdering test
-     * Then SystemService should be called to trigger investigation to the vehicle
+     * If the defaultVehicle's eventLog fail the checkOdering test
+     * Then SystemService should be called to trigger investigation to the defaultVehicle
      */
+    @Test
     public void checkSystemServiceTriggerInvestigation(){
         List<ZoneBoundaryCrossing> eventLog = new ArrayList<ZoneBoundaryCrossing>();
-        //create a vehicle's eventLog that could return false if checkOrderingOf(eventLog)
-        new CrossingEvent().makeCrossingEvent(vehicle,"07:00:29","05:00:22",eventLog);
+        //create a defaultVehicle's eventLog that could return false if checkOrderingOf(eventLog)
+        crossingEvent().setComeInTime("07:00:29").setComeOutTime("05:00:22").setEventLog(eventLog).build().addEventLog();
         context.checking(new Expectations(){{
             //the true below mean false to "!checkOrderingOf"
-            // meaning charging the vehicle for its eventLog is problematic
+            // meaning charging the defaultVehicle for its eventLog is problematic
             if (true) {
             }
-            else{exactly(1).of(systemService).triggerInvestigation(vehicle);
+            else{exactly(1).of(systemService).triggerInvestigation(defaultVehicle);
             }
         }});
-        calculator.calculateOneVehicleCharge(vehicle,eventLog);
+        calculator.calculateOneVehicleCharge(defaultVehicle,eventLog);
 
     }
 }

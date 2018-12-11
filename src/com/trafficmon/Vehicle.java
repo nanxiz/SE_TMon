@@ -34,4 +34,9 @@ public class Vehicle {
     public int hashCode() {
         return registration != null ? registration.hashCode() : 0;
     }
+
+    //public int hashCode() {
+    //    return registration != null ? registration.hashCode() : 0;
+   // }
+
 }

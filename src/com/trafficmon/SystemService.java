@@ -27,7 +27,6 @@ public class SystemService implements SystemServiceInterface {
     }
     @Override
     public void chargeDeduction(Vehicle vehicle, BigDecimal charge){
-               // throws AccountNotRegisteredException, InsufficientCreditException {
         try {accountsService.accountFor(vehicle).deduct(charge);}
         catch(AccountNotRegisteredException|InsufficientCreditException e){
             issuePenalty(vehicle,charge);
