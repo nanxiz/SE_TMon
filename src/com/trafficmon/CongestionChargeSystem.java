@@ -24,7 +24,9 @@ public class CongestionChargeSystem {
 
     }
 
-
+    /**
+     * this method is for calculating all the vehicles charge and charge them
+     */
     public void calculateCharges() {
         newRuleCalculator.calculateAllVehicleCharges(vehiclesCrossingsRecords.fileEventLogIntoVehiclesRecord(eventLog));
     }

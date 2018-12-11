@@ -6,5 +6,5 @@ import java.util.Map;
 public interface VehiclesCrossingsRecordInterface {
     Map<Vehicle,List<ZoneBoundaryCrossing>> fileEventLogIntoVehiclesRecord(List<ZoneBoundaryCrossing> eventLog);
 
-    //Map<Vehicle, List<ZoneBoundaryCrossing>> getVehiclesCrossingsMap();
+    //Map<Vehicle, List<ZoneBoundaryCrossing>> getCrossingsByVehicle();
 }

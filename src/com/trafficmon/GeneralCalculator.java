@@ -16,8 +16,6 @@ public abstract class GeneralCalculator {
         for (Map.Entry<Vehicle, List<ZoneBoundaryCrossing>>
                 vehicleCrossings :vehiclesCrossingsMap.entrySet()) {
 
-           // Vehicle vehicle = vehicleCrossings.getKey();
-           // List<ZoneBoundaryCrossing> crossings = vehicleCrossings.getValue();
             calculateOneVehicleCharge(vehicleCrossings.getKey(),vehicleCrossings.getValue());
 
         }

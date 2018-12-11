@@ -1,31 +1,34 @@
 package com.trafficmon;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 public class VehiclesCrossingsRecord implements VehiclesCrossingsRecordInterface {
-    private final Map<Vehicle, List<ZoneBoundaryCrossing>> vehiclesCrossingsMap;
+    private final Map<Vehicle, List<ZoneBoundaryCrossing>> CrossingsByVehicle;
 
 
     public VehiclesCrossingsRecord(){
-        this.vehiclesCrossingsMap = new HashMap<Vehicle, List<ZoneBoundaryCrossing>>();
+        this.CrossingsByVehicle = new HashMap<Vehicle, List<ZoneBoundaryCrossing>>();
     }
 
     @Override
     public Map<Vehicle,List<ZoneBoundaryCrossing>> fileEventLogIntoVehiclesRecord(List<ZoneBoundaryCrossing> eventLog){
         for (ZoneBoundaryCrossing crossing : eventLog) {
-            if (!vehiclesCrossingsMap.containsKey(crossing.getVehicle())) {
-                vehiclesCrossingsMap.put(crossing.getVehicle(), new ArrayList<ZoneBoundaryCrossing>());
+            if (!CrossingsByVehicle.containsKey(crossing.getVehicle())) {
+                CrossingsByVehicle.put(crossing.getVehicle(), new ArrayList<ZoneBoundaryCrossing>());
             }
-            vehiclesCrossingsMap.get(crossing.getVehicle()).add(crossing);
+            CrossingsByVehicle.get(crossing.getVehicle()).add(crossing);
 
         }
-        return vehiclesCrossingsMap;
+        return CrossingsByVehicle;
+    }
+
+    public List<ZoneBoundaryCrossing> getCertainVehicleCrossingRecord(Vehicle vehicle){
+        return CrossingsByVehicle.getOrDefault(vehicle, null);
     }
 
 
-    public Map<Vehicle, List<ZoneBoundaryCrossing>> getVehiclesCrossingsMap() {
-        return vehiclesCrossingsMap;
+    public Map<Vehicle, List<ZoneBoundaryCrossing>> getCrossingsByVehicle() {
+        return CrossingsByVehicle;
     }
 }
 
