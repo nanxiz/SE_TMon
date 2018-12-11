@@ -1,6 +1,5 @@
 package com.trafficmon;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CrossingEventBuilder {

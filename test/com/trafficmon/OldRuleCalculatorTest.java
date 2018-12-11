@@ -1,17 +1,14 @@
 package com.trafficmon;
 
 
-//import org.junit.Rule;
 import org.junit.Test;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.trafficmon.CrossingEventBuilder.crossingEvent;
 import static org.hamcrest.core.Is.is;
-
 import static org.hamcrest.MatcherAssert.assertThat;
+
 
 public class OldRuleCalculatorTest {
     private OldRuleCalculator oldCalculator = new OldRuleCalculator();
@@ -27,6 +24,19 @@ public class OldRuleCalculatorTest {
         crossingEvent().setComeInTime("12:08:30").setComeOutTime("14:38:30").setEventLog(eventLog).build().addEventLog();
         assertThat(oldCalculator.calculateCharge(eventLog),is(BigDecimal.valueOf(150).multiply(oldCalculator.CHARGE_RATE_POUNDS_PER_MINUTE)));
     }
+
+
+    /**
+     *In this extreme case vehicle enter and enxit at the same time
+     * single stay
+     */
+    @Test
+    public void sameTimeEntryAndLeave(){
+        List<ZoneBoundaryCrossing> eventLog =new ArrayList<ZoneBoundaryCrossing>();
+        crossingEvent().setComeInTime("12:08:30").setComeOutTime("12:08:30").setEventLog(eventLog).build().addEventLog();
+        assertThat(oldCalculator.calculateCharge(eventLog),is(BigDecimal.valueOf(0).multiply(oldCalculator.CHARGE_RATE_POUNDS_PER_MINUTE)));
+    }
+
 
 
     /**

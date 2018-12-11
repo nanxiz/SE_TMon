@@ -4,14 +4,14 @@ import java.util.*;
 
 public class CongestionChargeSystem {
     private final GeneralCalculator calculator;
-    private final VehiclesCrossingsRecord vehiclesCrossingsRecords;
     private final List<ZoneBoundaryCrossing> eventLog;
+    private boolean calculated;
 
 
     CongestionChargeSystem(){
         this.calculator = new NewRuleCalculator();
         this.eventLog = new ArrayList<ZoneBoundaryCrossing>();
-        this.vehiclesCrossingsRecords = new VehiclesCrossingsRecord();
+        this.calculated = false;
     }
 
 
@@ -30,16 +30,26 @@ public class CongestionChargeSystem {
      * this method is for calculating all the vehicles charge and charge them
      */
     public void calculateCharges() {
-        calculator.calculateAllVehicleCharges(vehiclesCrossingsRecords.fileEventLogIntoVehiclesRecord(eventLog));
+        calculated = calculator.calculateAllVehicleCharges(buildVehicleMap(eventLog));
     }
 
-    //public void switchCalculator(GeneralCalculator calculator){
-        //this.calculator=calculator.calculateCharge();
-   // }
 
-    public  List<ZoneBoundaryCrossing> getEventLog(){
-        return eventLog;
+    /**
+     *This method takes eventLog and return
+     * map of vehicles and their corresponding crossings
+     */
+    public Map<Vehicle,List<ZoneBoundaryCrossing>> buildVehicleMap(List<ZoneBoundaryCrossing> eventLogg){
+        Map<Vehicle, List<ZoneBoundaryCrossing>> crossingsByVehicle = new HashMap<Vehicle, List<ZoneBoundaryCrossing>>();
+        for (ZoneBoundaryCrossing crossing : eventLogg) {
+            if (!crossingsByVehicle.containsKey(crossing.getVehicle())) {
+                crossingsByVehicle.put(crossing.getVehicle(), new ArrayList<ZoneBoundaryCrossing>());
+            }
+            crossingsByVehicle.get(crossing.getVehicle()).add(crossing);
+
+        }
+        return crossingsByVehicle;
     }
+
 
 
     public boolean previouslyRegistered(Vehicle vehicle, List<ZoneBoundaryCrossing> eventLog) {
@@ -47,6 +57,14 @@ public class CongestionChargeSystem {
             if (crossing.getVehicle().equals(vehicle)) { return true; }
         }
         return false;
+    }
+
+    public  List<ZoneBoundaryCrossing> getEventLog(){
+        return eventLog;
+    }
+
+    public boolean whetherCalculated(){
+        return calculated;
     }
 
 

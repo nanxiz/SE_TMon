@@ -1,26 +1,15 @@
 package com.trafficmon;
 
-import org.jmock.Expectations;
-import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.List;
-
-
+import java.util.*;
+import static com.trafficmon.CrossingEventBuilder.crossingEvent;
 
 
 public class CongestionChargeSystemTest {
     private final Vehicle vehicle1 = Vehicle.withRegistration("A123 XYZ");
     private final Vehicle vehicle2 = Vehicle.withRegistration("J091 4PY");
     private CongestionChargeSystem ccsystem = new CongestionChargeSystem();
-
-
-    @Rule
-    public JUnitRuleMockery context = new JUnitRuleMockery();
-    private VehiclesCrossingsRecordInterface vehiclesCrossingsRecord = context.mock(VehiclesCrossingsRecordInterface.class);
-
 
 
 
@@ -36,6 +25,32 @@ public class CongestionChargeSystemTest {
         Assert.assertEquals(ccsystem.getEventLog().size(), 2);
     }
 
+    /**
+     *Check if the method buildVehicleMap() is working
+     */
+    @Test
+    public void checkBuildVehicleCrossingsHashMap() {
+        List<ZoneBoundaryCrossing> eventLog =new ArrayList<ZoneBoundaryCrossing>();
+        crossingEvent().setVehicle(vehicle1).setComeInTime("10:18:33").setComeOutTime("16:43:21").setEventLog(eventLog).build().addEventLog();
+        Map<Vehicle,List<ZoneBoundaryCrossing>> vehicleListMap = ccsystem.buildVehicleMap(eventLog);
+        Assert.assertEquals(vehicleListMap.size(),1);
+        Assert.assertTrue(vehicleListMap.containsKey(vehicle1));
+        Assert.assertEquals(vehicleListMap.get(vehicle1),eventLog);
+    }
+
+
+    /**
+     *Check if calculateCharge() method working
+     * if it is the value of "bool calculated" will change from false to true
+     */
+    @Test
+    public void checkCalculateCharge() {
+        ccsystem.vehicleEnteringZone(vehicle1);
+        ccsystem.vehicleLeavingZone(vehicle1);
+        Assert.assertFalse(ccsystem.whetherCalculated());
+        ccsystem.calculateCharges();
+        Assert.assertTrue(ccsystem.whetherCalculated());
+    }
 
     /**
      * Check if the eventLog is updated correctly
@@ -64,7 +79,6 @@ public class CongestionChargeSystemTest {
     public void checkIfPreviouslyRegistered(){
         List<ZoneBoundaryCrossing> eventLog=new ArrayList<>();
         eventLog.add(new EntryEvent(vehicle1));
-
         Assert.assertTrue(ccsystem.previouslyRegistered(vehicle1, eventLog));
         Assert.assertFalse(ccsystem.previouslyRegistered(vehicle2, eventLog));
     }

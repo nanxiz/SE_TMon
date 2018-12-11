@@ -17,13 +17,12 @@ public abstract class GeneralCalculator {
         return (int) Math.ceil((endTimeMs - startTimeMs) / (1000.0 * 60.0));
     }
 
-    public void calculateAllVehicleCharges(Map<Vehicle,List<ZoneBoundaryCrossing>> vehiclesCrossingsMap){
+    public boolean calculateAllVehicleCharges(Map<Vehicle, List<ZoneBoundaryCrossing>> vehiclesCrossingsMap){
         for (Map.Entry<Vehicle, List<ZoneBoundaryCrossing>>
                 vehicleCrossings :vehiclesCrossingsMap.entrySet()) {
-
             calculateOneVehicleCharge(vehicleCrossings.getKey(),vehicleCrossings.getValue());
-
         }
+        return true;
     }
 
     public void calculateOneVehicleCharge(Vehicle vehicle,List<ZoneBoundaryCrossing> crossings){

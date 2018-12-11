@@ -19,15 +19,16 @@ public class CrossingEvent {
         this.eventLog = eventLog;
         this.vehicle = vehicle;
     }
+
     public long dateTimeToMilis(String dateTime){
         return dtf.parseDateTime(dateTime).getMillis();
     }
+
     public void addEventLog(){
         DateTimeUtils.setCurrentMillisFixed(dtf.parseDateTime(timeIn).getMillis());
         eventLog.add((new EntryEvent(vehicle)));
         DateTimeUtils.setCurrentMillisFixed(dtf.parseDateTime(timeOut).getMillis());
         eventLog.add ((new ExitEvent(vehicle)));
-
     }
 
 

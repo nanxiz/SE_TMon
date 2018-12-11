@@ -44,6 +44,7 @@ public class GeneralCalculatorTest {
         assertFalse(calculator.checkOrderingOf(eventLog, defaultVehicle));
     }
 
+
     /**
      *if an entry is followed by an entry
      *then it should return false
@@ -54,9 +55,9 @@ public class GeneralCalculatorTest {
         eventLog.add(new EntryEvent(defaultVehicle));
         eventLog.add(new EntryEvent(defaultVehicle));
         eventLog.add(new ExitEvent(defaultVehicle));
-
         assertFalse(calculator.checkOrderingOf(eventLog, defaultVehicle));
     }
+
 
     /**
      *if an exit is followed by an exit
@@ -71,6 +72,7 @@ public class GeneralCalculatorTest {
         assertFalse(calculator.checkOrderingOf(eventLog, defaultVehicle));
     }
 
+
     /**
      *if the last event is before the new event
      *an Entry/Exit Event followed by Exit/Entry Event
@@ -81,9 +83,7 @@ public class GeneralCalculatorTest {
         List<ZoneBoundaryCrossing> eventLog=new ArrayList<ZoneBoundaryCrossing>();
         crossingEvent().setComeInTime("03:20:29").setComeOutTime("08:05:32").setEventLog(eventLog).build().addEventLog();
         crossingEvent().setComeInTime("09:33:57").setComeOutTime("10:35:17").setEventLog(eventLog).build().addEventLog();
-
         assertTrue(calculator.checkOrderingOf(eventLog, defaultVehicle));
-
     }
 
 

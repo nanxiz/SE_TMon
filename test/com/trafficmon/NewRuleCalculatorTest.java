@@ -97,7 +97,6 @@ public class NewRuleCalculatorTest {
     }
 
 
-
     /**
      * if vehicle entries multiple(>2) time
      * always leave and come back < 4 hours
@@ -114,8 +113,6 @@ public class NewRuleCalculatorTest {
         assertThat(newCalculator.calculateCharge(eventLog),is(BigDecimal.valueOf(12)));
 
     }
-
-
 
 
     /**
