@@ -27,11 +27,12 @@ public class CongestionChargeSystemTest {
 
     /**
      *Check if the method buildVehicleMap() is working
+     * this method should build a map with keys:Vehicle and values: each vehicle's crossing list
      */
     @Test
     public void checkBuildVehicleCrossingsHashMap() {
         List<ZoneBoundaryCrossing> eventLog =new ArrayList<ZoneBoundaryCrossing>();
-        crossingEvent().setVehicle(vehicle1).setComeInTime("10:18:33").setComeOutTime("16:43:21").setEventLog(eventLog).build().addEventLog();
+        crossingEvent().setVehicle(vehicle1).setEventLog(eventLog).build().addEventLog();
         Map<Vehicle,List<ZoneBoundaryCrossing>> vehicleListMap = ccsystem.buildVehicleMap(eventLog);
         Assert.assertEquals(vehicleListMap.size(),1);
         Assert.assertTrue(vehicleListMap.containsKey(vehicle1));

@@ -107,7 +107,7 @@ public class GeneralCalculatorTest {
             }
             else{}
         }});
-        calculator.calculateOneVehicleCharge(defaultVehicle,eventLog);
+        calculator.calculateForOneVehicle(defaultVehicle,eventLog);
     }
 
 
@@ -128,7 +128,7 @@ public class GeneralCalculatorTest {
             else{exactly(1).of(systemService).triggerInvestigation(defaultVehicle);
             }
         }});
-        calculator.calculateOneVehicleCharge(defaultVehicle,eventLog);
+        calculator.calculateForOneVehicle(defaultVehicle,eventLog);
 
     }
 }

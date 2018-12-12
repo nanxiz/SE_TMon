@@ -86,12 +86,10 @@ public class NewRuleCalculatorTest {
      */
     @Test
     public void multipleEntryGapWithin4HourOnlyChargeOnce(){
-        //Vehicle vehicle=Vehicle.withRegistration("A123 XYZ");
         List<ZoneBoundaryCrossing> eventLog =new ArrayList<ZoneBoundaryCrossing>();
         crossingEvent().setComeInTime("10:03:30").setComeOutTime("10:32:29").setEventLog(eventLog).build().addEventLog();
         crossingEvent().setComeInTime("13:03:30").setComeOutTime("14:12:29").setEventLog(eventLog).build().addEventLog();
         crossingEvent().setComeInTime("15:20:52").setComeOutTime("15:33:17").setEventLog(eventLog).build().addEventLog();
-        //new CrossingEvent().addEventLog(vehicle,"17:29:48","20:09:30",eventLog);
         assertThat(newCalculator.calculateCharge(eventLog),is(BigDecimal.valueOf(6)));
 
     }
@@ -105,7 +103,6 @@ public class NewRuleCalculatorTest {
      */
     @Test
     public void multipleEntryIn2TimeZoneGapUnder4HourTotalTimeOver4Hours(){
-       // Vehicle vehicle=Vehicle.withRegistration("A123 XYZ");
         List<ZoneBoundaryCrossing> eventLog =new ArrayList<ZoneBoundaryCrossing>();
         crossingEvent().setComeInTime("08:03:30").setComeOutTime("10:12:29").setEventLog(eventLog).build().addEventLog();
         crossingEvent().setComeInTime("11:20:52").setComeOutTime("15:33:17").setEventLog(eventLog).build().addEventLog();
@@ -124,13 +121,11 @@ public class NewRuleCalculatorTest {
      */
     @Test
     public void multipleEntryIn2TimeZoneGapOver4HourInTotalMoreThan4Hours(){
-        //Vehicle vehicle=Vehicle.withRegistration("A123 XYZ");
         List<ZoneBoundaryCrossing> eventLog =new ArrayList<ZoneBoundaryCrossing>();
         crossingEvent().setComeInTime("02:03:30").setComeOutTime("02:12:29").setEventLog(eventLog).build().addEventLog();
         crossingEvent().setComeInTime("06:20:52").setComeOutTime("06:33:17").setEventLog(eventLog).build().addEventLog();
         crossingEvent().setComeInTime("14:29:48").setComeOutTime("15:09:30").setEventLog(eventLog).build().addEventLog();
         crossingEvent().setComeInTime("20:55:48").setComeOutTime("21:09:30").setEventLog(eventLog).build().addEventLog();
-
         assertThat(newCalculator.calculateCharge(eventLog),is(BigDecimal.valueOf(20)));
 
     }

@@ -20,12 +20,12 @@ public abstract class GeneralCalculator {
     public boolean calculateAllVehicleCharges(Map<Vehicle, List<ZoneBoundaryCrossing>> vehiclesCrossingsMap){
         for (Map.Entry<Vehicle, List<ZoneBoundaryCrossing>>
                 vehicleCrossings :vehiclesCrossingsMap.entrySet()) {
-            calculateOneVehicleCharge(vehicleCrossings.getKey(),vehicleCrossings.getValue());
+            calculateAndChargeOneVehicle(vehicleCrossings.getKey(),vehicleCrossings.getValue());
         }
         return true;
     }
 
-    public void calculateOneVehicleCharge(Vehicle vehicle,List<ZoneBoundaryCrossing> crossings){
+    private void calculateAndChargeOneVehicle(Vehicle vehicle, List<ZoneBoundaryCrossing> crossings){
         if (!checkOrderingOf(crossings,vehicle)) {
             systemServices.triggerInvestigation(vehicle);
         }
@@ -50,5 +50,11 @@ public abstract class GeneralCalculator {
         }
 
         return true;
+    }
+
+    //for testing private calculateAndChargeOneVehicle() method
+    public void calculateForOneVehicle(Vehicle vehicle,List<ZoneBoundaryCrossing> crossing){
+        calculateAndChargeOneVehicle(vehicle,crossing);
+
     }
 }

@@ -9,7 +9,11 @@ import org.joda.time.*;
 
 public class NewRuleCalculator extends GeneralCalculator {
 
-    public static final int TIME_DETERMINATION_POINT = 14;
+    private static final int TIME_DETERMINATION_POINT = 14;
+    private static final int CHARGE_BEFORE_2PM = 6;
+    private static final int CHARGE_AFTER_2PM = 4;
+    private static final int MAXIMUM_ONE_CHARGE = 12;
+    private static final int MINUTE_IN_ZONE_LIMIT = 240;
 
     @Override
     public BigDecimal calculateCharge(List<ZoneBoundaryCrossing> crossings) {
@@ -29,14 +33,14 @@ public class NewRuleCalculator extends GeneralCalculator {
 
             if (crossing instanceof ExitEvent) {
                 timeInZone += minutesBetween(lastEvent.timestamp(),crossing.timestamp());
-                if (timeInZone>240){ //240 represents 4 hours
-                    charge = 12;
+                if (timeInZone> MINUTE_IN_ZONE_LIMIT){ //240 represents 4 hours
+                    charge = MAXIMUM_ONE_CHARGE;
                     break;
                 }
 
             }
             if (crossing instanceof EntryEvent) {
-                if (minutesBetween(lastEvent.timestamp(),crossing.timestamp())>240){
+                if (minutesBetween(lastEvent.timestamp(),crossing.timestamp())> MINUTE_IN_ZONE_LIMIT){
                     charge += checkIfTimeBeforeTwo(crossing.timestamp());
 
                 }
@@ -52,7 +56,7 @@ public class NewRuleCalculator extends GeneralCalculator {
 
     public int checkIfTimeBeforeTwo(long time){
         DateTime comeInTime = new DateTime(time);
-        return (comeInTime.getHourOfDay()<TIME_DETERMINATION_POINT)? 6 : 4;
+        return (comeInTime.getHourOfDay()<TIME_DETERMINATION_POINT)? CHARGE_BEFORE_2PM : CHARGE_AFTER_2PM;
 
     }
 

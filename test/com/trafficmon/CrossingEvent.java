@@ -11,7 +11,7 @@ public class CrossingEvent {
     private Vehicle vehicle;
     private  String timeOut;
     private  List<ZoneBoundaryCrossing> eventLog;
-    private DateTimeFormatter dtf = DateTimeFormat.forPattern("HH:mm:ss");
+    private static final DateTimeFormatter dtf = DateTimeFormat.forPattern("HH:mm:ss");
 
     public CrossingEvent(Vehicle vehicle, String comeInTime, String comeOutTime, List<ZoneBoundaryCrossing> eventLog){
         this.timeIn = comeInTime;
